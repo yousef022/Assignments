@@ -1,0 +1,56 @@
+/*This file is responsible for all the styling of the game.*/
+body{
+  background-image: url(../images/background.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.page-wrapper{
+  position: absolute;
+  width:100%;
+  height: 100%;
+}
+
+h1{
+  font-size: 500%;
+  color: white;
+  text-align: center;
+}
+
+#lose{
+  display: none;
+  font-size: 300%;
+  color: white;
+  text-align: center;
+}
+
+#alien{
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  left: 25%;
+  top: 10%;
+  transition-duration: 1s;
+  z-index: 999;
+}
+
+.spaceship{
+  width: 120px;
+  height: 60px;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  transition-duration: 1s;
+  z-index: 999;
+}
+
+#canvasspace{
+  position: absolute;
+  border: 2px solid orange;
+  background-color: green;
+  width: 1425px;
+  height: 1000px;
+  top: 0%;
+  left: 0%;
+}
