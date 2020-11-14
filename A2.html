@@ -1,0 +1,53 @@
+<!-- This file is responsible for all the html and images of catch the alien.-->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Catch the alien</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <h1>Catch The Alien</h1>
+    <img src="images/alien.png" id="alien" draggable = "false">
+    <img src="images/spaceship.png" id="spaceship1" class="spaceship" draggable = "false">
+
+    <script>
+      //Solution is 15 lines of code.  The instructions make it look like a longer assingment than it really it is.
+
+      //Event handler setup
+      //1. Create an event handler on the window object for the load event 
+      
+
+      //2. Create an event handler on the window object for the mousemove event  
+
+        //3. Inside of the callback function of this event handler, create offset distances for X and Y from the mouse
+    
+    //Move the spaceship towards the mouse 
+    //4. Get the image element & store it in a variable 
+    //5. move the image by setting the coordinates of left & top refer to slide .  Ex. node.style.left = your coordinates calculation here.  
+    //Note node is the variable name you stored your image element in.
+    //Note the left & top properties track the x & y coordinates respectively & must be set seperately.
+    
+    //Coordinates calculation for left & top properties
+    //6. Use the JS built-in function parseInt() to cast your calculation from a float to an int. Refer to https://www.w3schools.com/jsref/jsref_parseint.asp 
+    //7. Get the current x & y coordinates & add the offset from step 3.
+    //8. Use the JS built-in function Math.random() to add a random number to increment the movement of the image following the mouse. 
+    // Ex. + (Math.random()*200 + 100))
+    //Refer to https://www.w3schools.com/jsref/jsref_random.asp 
+    //9. Concatenate the pixel unit to your calculation. Ex. + 'px';
+      
+  
+  //Move the alien away from the cursor when the cursor is moved close to the alien image.
+  //10. Get the image element & store it in a variable 
+
+  //11. Get browser's current width & height to set a horizontal limit for the alien image & store in variables.
+
+
+    //12. Attach an event handler to the alien image for the mouseover event
+    //13. Use the target property of the event object to change the coordinates. Ex. event.target.style.left = your coordinates calculation (again refer to steps 8 & 9)
+    //14. Your coordinates calculation requires the variables created in step 11.
+
+
+    </script>
+  </body>
+</html>
