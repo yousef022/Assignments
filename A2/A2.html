@@ -21,7 +21,17 @@
       });
 
       //2. Create an event handler on the window object for the mousemove event  
+        window.addEventListener("mousemove",function(e){
+          x = offsetX;
+          y = offsetY;
+          var newX = clientX + 100;
+          var newY = clientY + 100;
 
+          var spaceship = document.getElementByID("spaceship1");
+          
+
+
+        });
         //3. Inside of the callback function of this event handler, create offset distances for X and Y from the mouse
     
     //Move the spaceship towards the mouse 
