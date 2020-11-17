@@ -22,13 +22,13 @@
 
       //2. Create an event handler on the window object for the mousemove event  
         window.addEventListener("mousemove",function(e){
-          x = offsetX;
-          y = offsetY;
-          var newX = clientX + 100;
-          var newY = clientY + 100;
+          x = e.offsetX;
+          y = e.offsetY;
+          var newX = e.clientX + 100;
+          var newY = e.clientY + 100;
 
           var spaceship = document.getElementByID("spaceship1");
-          
+
 
 
         });
