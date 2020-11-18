@@ -27,7 +27,17 @@
           var newX = e.clientX + 100;
           var newY = e.clientY + 100;
 
-          var spaceship = document.getElementByID("spaceship1");
+          var spaceship = document.getElementById("spaceship1");
+
+          spaceship.style.left = newX + "px";
+          spaceship.style.top = newY + "px";
+
+          spaceship.style.left = parseInt(spaceship.style.left) + 20 + 'px';
+          spaceship.style.top = parseInt(spaceship.style.top) + 20 + 'px';
+
+          newCoorX = spaceship.style.left + x;
+          newCoorY = spaceship.style.top + y;
+
 
 
 
