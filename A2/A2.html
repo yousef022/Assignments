@@ -18,26 +18,37 @@
       //1. Create an event handler on the window object for the load event 
       window.addEventListener("load", function(e){
           console.log("The page has been loaded");
+
           window.addEventListener("mousemove",function(e){
-           x = e.clientX + 20;
-           y = e.clientY + 20;
+           var x = e.clientX;
+           var y = e.clientY;
+           var offsetx = e.clientX - 20;
+           var offsety = e.clientY - 20;
 
           var spaceship = document.getElementById("spaceship1");
 
-          spaceship.style.left = x + "px";
-          spaceship.style.top = y + "px";
+          //spaceship.style.left = x + "px";
+          //spaceship.style.top = y + "px";
 
-          spaceship = parseInt( Math.random() + x + 100) + 'px'
-          spaceship = parseInt( Math.random() + y + 100) + 'px'
+          spaceship.style.left = parseInt( x +  Math.random() + offsetx ) + 'px';
+          spaceship.style.top = parseInt( y + Math.random() + offsety ) + 'px';
 
-        
+          //newCoorX = e.clientX + x;
+          //newCoorY = e.clientY + y;
 
-          newCoorX = e.clientX + x;
-          newCoorY = e.clientY + y;
+          });
+
+        greenAlien.addEventListener("mouseover", function(e){
+          thewidth = window.innerWidth;
+          theheight = window.innerHeight;
 
 
+          e.target.style.left = parseInt( thewidth + Math.random() ) + 'px';
+          e.target.style.top =  parseInt( theheight + Math.random() ) + 'px';
 
+          
         });
+
       });
 
       //2. Create an event handler on the window object for the mousemove event  
@@ -61,11 +72,12 @@
   
   //Move the alien away from the cursor when the cursor is moved close to the alien image.
   //10. Get the image element & store it in a variable 
-
+    greenAlien = document.getElementById("alien");
   //11. Get browser's current width & height to set a horizontal limit for the alien image & store in variables.
 
 
     //12. Attach an event handler to the alien image for the mouseover event
+
     //13. Use the target property of the event object to change the coordinates. Ex. event.target.style.left = your coordinates calculation (again refer to steps 8 & 9)
     //14. Your coordinates calculation requires the variables created in step 11.
 
