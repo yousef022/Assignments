@@ -22,29 +22,32 @@
           window.addEventListener("mousemove",function(e){
            var x = e.clientX;
            var y = e.clientY;
-           var offsetx = e.clientX - 20;
-           var offsety = e.clientY - 20;
+           var offsetx = e.clientX + 20;
+           var offsety = e.clientY + 20;
 
           var spaceship = document.getElementById("spaceship1");
 
           //spaceship.style.left = x + "px";
           //spaceship.style.top = y + "px";
 
-          spaceship.style.left = parseInt( x +  Math.random() + offsetx ) + 'px';
-          spaceship.style.top = parseInt( y + Math.random() + offsety ) + 'px';
+          spaceship.style.left = parseInt(   Math.random() + x + offsetx ) + 'px';
+          spaceship.style.top = parseInt( Math.random() + y + offsety ) + 'px';
+
 
           //newCoorX = e.clientX + x;
           //newCoorY = e.clientY + y;
 
           });
 
-        greenAlien.addEventListener("mouseover", function(e){
-          thewidth = window.innerWidth;
-          theheight = window.innerHeight;
+        greenAlien = document.getElementById("alien");
+
+          greenAlien.addEventListener("mouseover", function(e){
+            thewidth = window.innerWidth;
+            theheight = window.innerHeight;
 
 
-          e.target.style.left = parseInt( thewidth + Math.random() ) + 'px';
-          e.target.style.top =  parseInt( theheight + Math.random() ) + 'px';
+            e.target.style.left = parseInt( Math.random() * thewidth ) + 'px';
+            e.target.style.top =  parseInt( Math.random() * theheight) + 'px';
 
           
         });
