@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>A3 Template</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+    <!-- https://purecss.io/ -->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+
+    <style>
+        body  {
+            margin-left: 40px;
+            margin-top: 40px;
+        }
+        
+        #btnSubmit {
+            margin-top: 30px;
+        }
+    </style>
+    
+</head>
+<body>
+<h3>Book Signing Event</h3>
+<table class="pure-table pure-table-bordered">
+    <thead>
+        <tr>
+            <th>Author</th>
+            <th>Book</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    </tbody>
+</table>
+    
+<button id="btnSubmit" type="button" class="pure-button pure-button-primary">Load Data</button>    
+
+<script>
+document.addEventListener("DOMContentLoaded", initApp);
+
+function initApp(){
+    var btnSubmit = document.getElementById("btnSubmit");
+    var btnSubmitText = btnSubmit.textContent;
+
+    //1. Cache tbody, h3 & h3 text selectors: See Ex 9.1
+
+
+    var url = "http://babanski.com/files/ajax/book_signing_event.json";
+
+    var data = null;
+    var xhr = new XMLHttpRequest(); 
+    
+    // Create function triggered by each state change event 
+    xhr.onreadystatechange = function (evt) { 
+         //2. Create variable to store all the rows data for <tbody> & initialize it to an empty string. 
+
+        //If server connection established -> ready state = OPENED
+        if (this.readyState == XMLHttpRequest.OPENED) {
+            // Steps 3 to 5 - Refer to Ex 9.1 as an example
+            //3. Change button text to "Please Wait!" 
+           
+            
+            //4. Reset text to an empty string inside <tbody> 
+            
+            
+            //5. Reset header to default text
+            
+        } //If request finished & response ready -> ready state = DONE
+        else if (this.readyState == XMLHttpRequest.DONE) {
+            //If server returns "200" status code: we got the file
+            if (this.status == 200) {
+               // Convert JSON into JavaScript object
+               data = JSON.parse(this.responseText);
+                   
+               // Check data is correct. i.e. data.section exists
+               if (data && data.section) {
+        
+                    if (data.section.title) { //Check title exists
+                        //6. Change h3 header text to title from JSON
+                        
+                    }
+
+                    //7. In rows variable, store rows data in table format
+                    //Note: Requires concatenating table HTML tags to the JSON data to create each row & cell.
+                    // Slow loop: .forEach - do not use
+                    // Fastest loop: for(...)
+                    
+               } // This ends the "if (data.section)".
+               else {
+                   //8. (else) If not able to parse data -> show "Error: Incorrect input received from the server!" error message.
+                   
+               }
+            } // This ends the "if (this.status == 200)"
+            //9. (else) If server returns 404 or 500 or 30X status code: means we didn't get the file. then display error message "Error: Cannot connect to the server!"
+            // This is equivalent to both error & timeout events.
+            else { 
+                
+            }
+            //10. Display rows data to the table
+            
+            //11. Change button text to concatenate "Re-" to the existing text to display "Re-Load Data". Similar to Ex 9.1
+            
+        } // This ends the else if (this.readyState == XMLHttpRequest.DONE) 
+    }; // This ends the onreadystatechange event handler
+
+    // From exercise 9.1
+    //Add event listener to button for click event & prevent event bubbling, open the server connection, set timeout, &send request
+    btnSubmit.addEventListener("click", loadData, false); 
+
+    function loadData(event) {
+        event.preventDefault();
+        // If we use xhr.open("GET", url, true); then the browser will load from DISK cache!
+        // To force loading JSON data from server & not cache we "create" dynamical URL by adding a parameter ?time_in_seconds
+        xhr.open("GET", url + "?" + (new Date()).getTime(), true);
+       //In Internet Explorer, the timeout property may be set only after calling the open() method 
+       // and before calling the send() method.
+        xhr.timeout = 6000; 
+        xhr.send();
+    };
+};
+ 
+</script>
+</body>
+</html>
