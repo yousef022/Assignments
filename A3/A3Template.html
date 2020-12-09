@@ -46,7 +46,7 @@ function initApp(){
     var btnSubmitText = btnSubmit.textContent;
 
     //1. Cache tbody, h3 & h3 text selectors: See Ex 9.1
-    var tbody = document.getElementsByTagName("tbody");
+    var tbody = document.getElementsByTagName("tbody")[0];
     var h3 = document.getElementsByTagName("h3");
     var h3Text = h3.textContent;
 
@@ -58,7 +58,7 @@ function initApp(){
     // Create function triggered by each state change event 
     xhr.onreadystatechange = function (evt) { 
          //2. Create variable to store all the rows data for <tbody> & initialize it to an empty string. 
-         datarows = tbody.textContent = " ";
+         rows = tbody.textContent = " ";
         
         //If server connection established -> ready state = OPENED
         if (this.readyState == XMLHttpRequest.OPENED) {
@@ -67,7 +67,7 @@ function initApp(){
             btnSubmit.textContent = "Please Wait!"
             
             //4. Reset text to an empty string inside <tbody> 
-            tbody.textContent = datarows;
+            tbody.textContent = " ";
             
             //5. Reset header to default text
             h3.textContent = h3Text;
@@ -90,7 +90,23 @@ function initApp(){
                     //Note: Requires concatenating table HTML tags to the JSON data to create each row & cell.
                     // Slow loop: .forEach - do not use
                     // Fastest loop: for(...)
+                    for (i=0; i < data.section.signing.length; i++){
+                        rows += "<tr><td>" + data.section.signing[i] + "</tr></td>";
+                        //var entry = "";
+                        //entry += "<tr><td>" + data.section.signing[i] + "</tr></td>";
+                        //entry+="</tbody>";
+                        //table = document.getElementById("myTable");
+                        //row = table.insertRow(i-1);
+                        //row.textContent = data.section.signing[i]; 
+                        //cell = row.insertCell(i+1);
+                        //cell.textContent = data.section.signing[i];
+                        
+                        //datarows = data.section.signing[i];
+                        //var cell =
+                    }
+
                     
+
                } // This ends the "if (data.section)".
                else {
                    //8. (else) If not able to parse data -> show "Error: Incorrect input received from the server!" error message.
