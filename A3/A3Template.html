@@ -85,7 +85,7 @@ function initApp(){
                     if (data.section.title) { //Check title exists
                         //6. Change h3 header text to title from JSON
                         h3.textContent = data.section.title;
-                        console.log(h3Text);
+                        
 
                     }
 
@@ -95,7 +95,6 @@ function initApp(){
                     // Fastest loop: for(...)
                     for (i=0; i < data.section.signing.length; i++){
                         rows += "<tr>" + "<td>" + data.section.signing[i].author.title + data.section.signing[i].author.name + "</td>" + "<td>" + data.section.signing[i].book.title + "</td>" + "<td>" +data.section.signing[i].book.price + "</td>" + "</tr>";
-
                         
                     }
 
@@ -104,19 +103,22 @@ function initApp(){
                } // This ends the "if (data.section)".
                else {
                    //8. (else) If not able to parse data -> show "Error: Incorrect input received from the server!" error message.
-                    
+                   tbody.textContent += "Error: Incorrect input received from the server!"; 
                }
             } // This ends the "if (this.status == 200)"
             //9. (else) If server returns 404 or 500 or 30X status code: means we didn't get the file. then display error message "Error: Cannot connect to the server!"
             // This is equivalent to both error & timeout events.
             else {
-
+                   xhr.onerror = xhr.ontimeout = function(evt) {
+                    tbody.textContent += "Error: Cannot connect to the server!";
+                   };
+                
                 
             }
             //10. Display rows data to the table
             tbody.innerHTML += rows;
             //11. Change button text to concatenate "Re-" to the existing text to display "Re-Load Data". Similar to Ex 9.1
-            
+            btnSubmit.textContent = "Re-" + btnSubmitText;  
         } // This ends the else if (this.readyState == XMLHttpRequest.DONE) 
     }; // This ends the onreadystatechange event handler
 
