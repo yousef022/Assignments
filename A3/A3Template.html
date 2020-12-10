@@ -47,7 +47,7 @@ function initApp(){
 
     //1. Cache tbody, h3 & h3 text selectors: See Ex 9.1
     var tbody = document.getElementsByTagName("tbody")[0];
-    var h3 = document.getElementsByTagName("h3");
+    var h3 = document.getElementsByTagName("h3")[0];
     var h3Text = h3.textContent;
 
     var url = "http://babanski.com/files/ajax/book_signing_event.json";
@@ -77,13 +77,16 @@ function initApp(){
             if (this.status == 200) {
                // Convert JSON into JavaScript object
                data = JSON.parse(this.responseText);
+                
                    
                // Check data is correct. i.e. data.section exists
                if (data && data.section) {
         
                     if (data.section.title) { //Check title exists
                         //6. Change h3 header text to title from JSON
-                        h3Text = data.section.title;
+                        h3.textContent = data.section.title;
+                        console.log(h3Text);
+
                     }
 
                     //7. In rows variable, store rows data in table format
@@ -91,18 +94,9 @@ function initApp(){
                     // Slow loop: .forEach - do not use
                     // Fastest loop: for(...)
                     for (i=0; i < data.section.signing.length; i++){
-                        rows += "<tr><td>" + data.section.signing[i] + "</tr></td>";
-                        //var entry = "";
-                        //entry += "<tr><td>" + data.section.signing[i] + "</tr></td>";
-                        //entry+="</tbody>";
-                        //table = document.getElementById("myTable");
-                        //row = table.insertRow(i-1);
-                        //row.textContent = data.section.signing[i]; 
-                        //cell = row.insertCell(i+1);
-                        //cell.textContent = data.section.signing[i];
+                        rows += "<tr>" + "<td>" + data.section.signing[i].author.title + data.section.signing[i].author.name + "</td>" + "<td>" + data.section.signing[i].book.title + "</td>" + "<td>" +data.section.signing[i].book.price + "</td>" + "</tr>";
+
                         
-                        //datarows = data.section.signing[i];
-                        //var cell =
                     }
 
                     
@@ -110,16 +104,17 @@ function initApp(){
                } // This ends the "if (data.section)".
                else {
                    //8. (else) If not able to parse data -> show "Error: Incorrect input received from the server!" error message.
-                   
+                    
                }
             } // This ends the "if (this.status == 200)"
             //9. (else) If server returns 404 or 500 or 30X status code: means we didn't get the file. then display error message "Error: Cannot connect to the server!"
             // This is equivalent to both error & timeout events.
-            else { 
+            else {
+
                 
             }
             //10. Display rows data to the table
-            
+            tbody.innerHTML += rows;
             //11. Change button text to concatenate "Re-" to the existing text to display "Re-Load Data". Similar to Ex 9.1
             
         } // This ends the else if (this.readyState == XMLHttpRequest.DONE) 
